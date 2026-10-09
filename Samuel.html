@@ -1,17 +1,17 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Coffee Website | Adesola</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Miniver&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
-
         * {
             margin: 0;
             padding: 0;
@@ -22,85 +22,195 @@
         :root {
             --primary-color: #ff4b2b;
             --secondary-color: #ff416c;
-            --text-color: #fff;
+            --dark-color: #ce2328;
+            --light-color: #fff8f0;
+            --text-color: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
         }
 
         .section-content {
-            padding: 0 20px;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
         }
 
         header {
-            background: var(--primary-color);
+            background-color: var(--primary-color);
         }
 
-        header .navbar {
+        .navbar {
+            min-height: 70px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 20px;
         }
 
-        .navbar .nav-logo {
+        .nav-logo {
             text-decoration: none;
         }
 
-        .navbar .nav-logo .logo-text {
+        .logo-text {
             color: var(--text-color);
-            font-size: 20px;
-            font-weight: 600;
+            font-size: 25px;
         }
 
-        .navbar .nav-menu {
+        .nav-menu {
             display: flex;
             align-items: center;
             gap: 10px;
             list-style: none;
         }
 
-        .navbar .nav-menu .nav-link {
-            padding: 10px 15px;
+        .nav-link {
+            display: block;
             color: var(--text-color);
-            font-size: 16px;
             text-decoration: none;
+            padding: 10px 15px;
             border-radius: 5px;
+            transition: 0.3s;
         }
 
-        .navbar .nav-menu .nav-link:hover {
-            color: var(--primary-color);
-            background: var(--text-color);
+        .nav-link:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .menu-icon {
+            display: none;
+            border: none;
+            background: transparent;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
         }
 
         .hero {
-            padding: 100px 20px;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            padding: 60px 0;
+        }
+
+        .hero-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 50px;
         }
 
         .hero-details {
-            max-width: 600px;
+            max-width: 650px;
+        }
+
+        .hero-subtitle {
+            color: var(--primary-color);
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
         }
 
         .hero-title {
-            font-size: 45px;
+            color: var(--dark-color);
+            font-size: 60px;
             margin-bottom: 20px;
         }
 
         .hero-description {
             font-size: 18px;
-            margin-bottom: 25px;
+            line-height: 1.7;
+            margin-bottom: 30px;
         }
 
         .hero-button {
             display: inline-block;
-            background: var(--primary-color);
-            color: var(--text-color);
-            padding: 12px 25px;
-            text-decoration: none;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 13px 25px;
             border-radius: 5px;
+            text-decoration: none;
+            transition: 0.3s;
         }
 
         .hero-button:hover {
-            background: var(--secondary-color);
+            background-color: var(--secondary-color);
+        }
+
+        .hero-image img {
+            width: 400px;
+            max-width: 100%;
+        }
+
+        .page-section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: 35px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .page-description {
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        @media screen and (max-width: 768px) {
+            .navbar {
+                flex-wrap: wrap;
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                width: 100%;
+                padding-top: 10px;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-link {
+                text-align: center;
+            }
+
+            .hero {
+                min-height: auto;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 42px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            .hero-image img {
+                width: 280px;
+            }
         }
     </style>
 </head>
@@ -109,69 +219,98 @@
 
     <header>
         <nav class="navbar section-content">
-
-            <a href="#" class="nav-logo">
+            <a href="#home" class="nav-logo">
                 <h2 class="logo-text">Coffee</h2>
             </a>
 
+            <button class="menu-icon"
+                    aria-label="Toggle navigation menu"
+                    aria-expanded="false">
+                ☰
+            </button>
+
             <ul class="nav-menu">
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Home</a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link">About</a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Menu</a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Testimonials</a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Gallery</a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Contact</a>
-                </li>
-
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#menu" class="nav-link">Menu</a></li>
+                <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-
         </nav>
     </header>
 
     <main>
-
-        <section class="hero">
-            <div class="section-content">
-
+        <section class="hero" id="home">
+            <div class="section-content hero-content">
                 <div class="hero-details">
+                    <p class="hero-subtitle">Best Coffee in Town</p>
 
-                    <h1 class="hero-title">
-                        Welcome to Coffee Haven
-                    </h1>
+                    <h1 class="hero-title">Enjoy Your Coffee</h1>
 
                     <p class="hero-description">
-                        Discover the finest coffee blends and experience
-                        the perfect cup every time.
+                        Discover our delicious coffee blends and enjoy
+                        the perfect cup of coffee every day.
                     </p>
 
-                    <a href="#" class="hero-button">
-                        Explore Menu
-                    </a>
-
+                    <a href="#menu" class="hero-button">Explore Menu</a>
                 </div>
 
+                <div class="hero-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=700&q=80"
+                        alt="A cup of freshly brewed coffee">
+                </div>
             </div>
         </section>
 
+        <section class="page-section" id="about">
+            <h2 class="page-title">About Us</h2>
+            <p class="page-description">
+                We serve delicious coffee made to give you a relaxing
+                and enjoyable coffee experience.
+            </p>
+        </section>
+
+        <section class="page-section" id="menu">
+            <h2 class="page-title">Our Menu</h2>
+            <p class="page-description">
+                Explore our coffee selection and discover your favourite blend.
+            </p>
+        </section>
+
+        <section class="page-section" id="testimonials">
+            <h2 class="page-title">Testimonials</h2>
+            <p class="page-description">
+                We appreciate everyone who enjoys our coffee.
+            </p>
+        </section>
+
+        <section class="page-section" id="contact">
+            <h2 class="page-title">Contact Us</h2>
+            <p class="page-description">
+                Thank you for visiting our coffee website.
+            </p>
+        </section>
     </main>
+
+    <script>
+        const menuButton = document.querySelector(".menu-icon");
+        const navMenu = document.querySelector(".nav-menu");
+
+        menuButton.addEventListener("click", function () {
+            navMenu.classList.toggle("active");
+
+            const isExpanded = navMenu.classList.contains("active");
+            menuButton.setAttribute("aria-expanded", isExpanded);
+        });
+
+        document.querySelectorAll(".nav-link").forEach(function (link) {
+            link.addEventListener("click", function () {
+                navMenu.classList.remove("active");
+                menuButton.setAttribute("aria-expanded", "false");
+            });
+        });
+    </script>
 
 </body>
 </html>
-```
