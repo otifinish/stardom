@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Our Menu | Coffee</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        :root {
+            --primary-color: #ff4b2b;
+            --secondary-color: #ff416c;
+            --dark-color: #ce2328;
+            --light-color: #fff8f0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: #444;
+        }
+
+        /* Navigation Bar */
+        header {
+            background-color: var(--primary-color);
+        }
+
+        .section-content {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        .navbar {
+            min-height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            text-decoration: none;
+        }
+
+        .logo-text {
+            color: white;
+            font-size: 25px;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            list-style: none;
+        }
+
+        .nav-link {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background-color: var(--dark-color);
+        }
+
+        .menu-icon {
+            display: none;
+            border: none;
+            background: transparent;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .menu-section {
+            padding: 60px 20px 80px;
+        }
+
+        .menu-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .menu-title {
+            color: var(--primary-color);
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .menu-description {
+            max-width: 600px;
+            margin: auto;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        /* Menu Category Buttons */
+        .menu-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 35px;
+        }
+
+        .filter-btn {
+            padding: 10px 22px;
+            border: 1px solid #bbb;
+            border-radius: 30px;
+            background: transparent;
+            color: #333;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .menu-grid {
+            max-width: 1400px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .menu-card {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            border: 1px solid #f0dfcf;
+            border-radius: 10px;
+            background-color: #fffdf9;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .menu-card img {
+            width: 42%;
+            height: 175px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .menu-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .menu-info h3 {
+            color: var(--primary-color);
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .menu-info p {
+            font-size: 13px;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .price {
+            display: block;
+            color: var(--primary-color);
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .order-btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-size: 12px;
+            transition: 0.3s;
+        }
+
+        .order-btn:hover {
+            background-color: var(--dark-color);
+        }
+
+        .menu-card.hidden {
+            display: none;
+        }
+
+        .menu-banner {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px 20px;
+        }
+
+        .banner-content {
+            max-width: 1000px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .banner-content h2 {
+            font-size: 26px;
+            margin-bottom: 8px;
+        }
+
+        .banner-content p {
+            line-height: 1.7;
+        }
+
+        .home-button {
+            display: inline-block;
+            padding: 12px 25px;
+            border: 2px solid white;
+            border-radius: 30px;
+            color: white;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: 0.3s;
+        }
+
+        .home-button:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        @media screen and (max-width: 1100px) {
+            .menu-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .navbar {
+                flex-wrap: wrap;
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                width: 100%;
+                padding-top: 10px;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-link {
+                text-align: center;
+            }
+
+            .menu-title {
+                font-size: 34px;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .menu-card img {
+                width: 40%;
+                height: 170px;
+            }
+
+            .banner-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media screen and (max-width: 420px) {
+            .menu-section {
+                padding: 40px 12px;
+            }
+
+            .menu-card {
+                gap: 10px;
+                padding: 10px;
+            }
+
+            .menu-card img {
+                width: 38%;
+                height: 150px;
+            }
+
+            .menu-info h3 {
+                font-size: 16px;
+            }
+
+            .menu-info p {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar section-content">
+
+            <a href="Samuel.html" class="nav-logo">
+                <h2 class="logo-text">Coffee</h2>
+            </a>
+
+            <button class="menu-icon"
+                    aria-label="Toggle navigation menu"
+                    aria-expanded="false">
+                ☰
+            </button>
+
+            <ul class="nav-menu">
+                <li><a href="Samuel.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="menu.html" class="nav-link active">Menu</a></li>
+                <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="menu-section">
+
+            <div class="menu-heading">
+                <h1 class="menu-title">Our Menu</h1>
+
+                <p class="menu-description">
+                    Explore our delicious coffee selection and find
+                    your favourite blend. We serve quality drinks
+                    made to brighten your day.
+                </p>
+            </div>
+            <div class="menu-filters">
+                <button class="filter-btn active" data-filter="all">
+                    All
+                </button>
+
+                <button class="filter-btn" data-filter="coffee">
+                    Coffee
+                </button>
+
+                <button class="filter-btn" data-filter="iced">
+                    Iced Coffee
+                </button>
+
+                <button class="filter-btn" data-filter="special">
+                    Specials
+                </button>
+
+                <button class="filter-btn" data-filter="non-coffee">
+                    Non-Coffee
+                </button>
+            </div>
+            <div class="menu-grid">
+
+                <article class="menu-card" data-category="coffee">
+                    <img
+                        src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=500&q=80"
+                        alt="Freshly brewed Americano coffee">
+
+                    <div class="menu-info">
+                        <h3>Americano</h3>
+                        <p>hot coffee.</p>
+                        <span class="price">#3500</span>
+                        <a href="contact.html" class="order-btn">Order Now</a>
+                    </div>
+                </article>
+
+                <article class="menu-card" data-category="coffee">
+                    <img
+                        src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=500&q=80"
+                        alt="Cappuccino with milk foam">
+
+                    <div class="menu-info">
+                        <h3>Cappuccino</h3>
+                        <p>steamed milk and foam.</p>
+                        <span class="price">#4000</span>
+                        <a href="contact.html" class="order-btn">Order Now</a>
+                    </div>
+                </article>
+
+                <article class="menu-card" data-category="coffee">
+                    <img
+                        src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=500&q=80"
+                        alt="Creamy latte coffee">
+
+                    <div class="menu-info">
+                        <h3>Latte</h3>
+                        <p>smooth steamed milk.</p>
+                        <span class="price">#4500</span>
+                        <a href="contact.html" class="order-btn">Order Now</a>
+                    </div>
+                </article>
+
+                <article class="menu-card" data-category="special">
+                    <img
+                        src="https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?auto=format&fit=crop&w=500&q=80"
+                        alt="Chocolate mocha coffee">
+
+                    <div class="menu-info">
+                        <h3>Mocha</h3>
+                        <p>chocolate and steamed milk.</p>
+                        <span class="price">#4500</span>
+                        <a href="contact.html" class="order-btn">Order Now</a>
+                    </div>
+                </article>
+
+                <article class="menu-card" data-category="iced">
+                    <img
+                        src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=500&q=80"
+                        alt="Refreshing iced coffee">
+
+                    <div class="menu-info">
+                        <h3>Iced Coffee</h3>
+                        <p>Chilled coffee for a refreshing break.</p>
+                        <span class="price">#3500</span>
+                        <a href="contact.html" class="order-btn">Order Now</a>
+                    </div>
+                </article>
+
+                <article class="menu-card" data-category="special">
+                    <img
+                        src="https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?auto=format&fit=crop&w=500&q=80"
+                        alt="Sweet caramel coffee">
+
+                    <div class="menu-info">
+                        <h3>Caramel Latte</h3>
+                        <p>milk and caramel flavour.</p>
+                        <span class="price">#4500</span>
+                        <a href="contact.html" class="order-btn">Order Now</a>
+                    </div>
+                </article>
+
+                <article class="menu-card" data-category="coffee">
+                    <img
+                        src="https://images.unsplash.com/photo-1497515114629-f71d768fd07c?auto=format&fit=crop&w=500&q=80"
+                        alt="A cup of black coffee">
+
+                    <div class="menu-info">
+                        <h3>Black Coffee</h3>
+                        <p>Pure, bold and full of flavour.</p>
+                        <span class="price">#3000</span>
+                        <a href="contact.html" class="order-btn">Order Now</a>
+                    </div>
+                </article>
+
+                <article class="menu-card" data-category="non-coffee">
+                    <img
+                        src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&w=500&q=80"
+                        alt="Green matcha latte">
+
+                    <div class="menu-info">
+                        <h3>Matcha Latte</h3>
+                        <p>A smooth blend of matcha and milk.</p>
+                        <span class="price">#4000</span>
+                        <a href="contact.html" class="order-btn">Order Now</a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="menu-banner">
+            <div class="banner-content">
+
+                <div>
+                    <h2>Good Coffee. Better Days.</h2>
+                    <p>
+                        Enjoy your favourite coffee and make every
+                        moment special.
+                    </p>
+                </div>
+
+                <a href="Samuel.html" class="home-button">
+                    Back to Home
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        const menuButton = document.querySelector(".menu-icon");
+        const navMenu = document.querySelector(".nav-menu");
+
+        menuButton.addEventListener("click", function () {
+            navMenu.classList.toggle("active");
+
+            const isExpanded = navMenu.classList.contains("active");
+            menuButton.setAttribute("aria-expanded", isExpanded);
+        });
+
+        document.querySelectorAll(".nav-link").forEach(function (link) {
+            link.addEventListener("click", function () {
+                navMenu.classList.remove("active");
+                menuButton.setAttribute("aria-expanded", "false");
+            });
+        });
+
+        // Menu category filters
+        const filterButtons = document.querySelectorAll(".filter-btn");
+        const menuCards = document.querySelectorAll(".menu-card");
+
+        filterButtons.forEach(function (button) {
+            button.addEventListener("click", function () {
+
+                const selectedCategory = button.dataset.filter;
+
+                filterButtons.forEach(function (item) {
+                    item.classList.remove("active");
+                });
+
+                button.classList.add("active");
+
+                menuCards.forEach(function (card) {
+                    if (
+                        selectedCategory === "all" ||
+                        card.dataset.category === selectedCategory
+                    ) {
+                        card.classList.remove("hidden");
+                    } else {
+                        card.classList.add("hidden");
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
+```

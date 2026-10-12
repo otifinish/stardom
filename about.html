@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About Us | Coffee</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        :root {
+            --primary-color: #ff4b2b;
+            --secondary-color: #ff416c;
+            --dark-color: #ce2328;
+            --light-color: #fff8f0;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: #444;
+        }
+
+        header {
+            background-color: var(--primary-color);
+        }
+
+        .section-content {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        .navbar {
+            min-height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            text-decoration: none;
+        }
+
+        .logo-text {
+            color: white;
+            font-size: 25px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 10px;
+            list-style: none;
+        }
+
+        .nav-link {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .menu-icon {
+            display: none;
+            border: none;
+            background: transparent;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .about-section {
+            padding: 80px 20px;
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-image,
+        .about-details {
+            flex: 1;
+        }
+
+        .about-image img {
+            display: block;
+            width: 100%;
+            border-radius: 15px;
+        }
+
+        .about-title {
+            color: var(--primary-color);
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .about-details p {
+            font-size: 16px;
+            line-height: 1.9;
+            margin-bottom: 15px;
+        }
+
+        .home-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 12px 25px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .home-button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        @media screen and (max-width: 768px) {
+            .navbar {
+                flex-wrap: wrap;
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                padding-top: 10px;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-link {
+                text-align: center;
+            }
+
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-title {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar section-content">
+
+            <a href="Samuel.html" class="nav-logo">
+                <h2 class="logo-text">Coffee</h2>
+            </a>
+
+            <button class="menu-icon"
+                    aria-label="Toggle navigation menu"
+                    aria-expanded="false">
+                ☰
+            </button>
+
+            <ul class="nav-menu">
+                <li><a href="Samuel.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="menu.html" class="nav-link">Menu</a></li>
+                <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+    <main>
+        <section class="about-section">
+            <div class="about-content">
+
+                <div class="about-image">
+                    <img src="about-image.jpg"
+                         alt="Two friends enjoying coffee together">
+                </div>
+
+                <div class="about-details">
+                    <h1 class="about-title">About Us</h1>
+
+                    <p>
+                        Welcome to our Coffee Website, where every cup
+                        brings comfort, happiness, and a special moment
+                        to enjoy.
+                    </p>
+
+                    <p>
+                        We believe coffee is more than just a drink.
+                        It brings people together, creates memories,
+                        and gives us a reason to relax and enjoy life.
+                    </p>
+
+                    <p>
+                        Our goal is to serve delicious coffee made
+                        with quality ingredients and provide a warm,
+                        welcoming experience for every coffee lover.
+                    </p>
+
+                    <p>
+                        Whether you are starting your morning or taking
+                        a break, we are here to make your coffee moments
+                        special.
+                    </p>
+
+                    <a href="Samuel.html" class="home-button">
+                        Back to Home
+                    </a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const menuButton = document.querySelector(".menu-icon");
+        const navMenu = document.querySelector(".nav-menu");
+
+        menuButton.addEventListener("click", function () {
+            navMenu.classList.toggle("active");
+
+            const isExpanded = navMenu.classList.contains("active");
+            menuButton.setAttribute("aria-expanded", isExpanded);
+        });
+
+        document.querySelectorAll(".nav-link").forEach(function (link) {
+            link.addEventListener("click", function () {
+                navMenu.classList.remove("active");
+                menuButton.setAttribute("aria-expanded", "false");
+            });
+        });
+    </script>
+
+</body>
+</html>
