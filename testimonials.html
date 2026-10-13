@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Testimonials | Coffee</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        :root {
+            --primary-color: #ff4b2b;
+            --secondary-color: #ff416c;
+            --dark-color: #ce2328;
+            --light-color: #fff8f0;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: #444;
+        }
+
+        header {
+            background-color: var(--primary-color);
+        }
+
+        .section-content {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        .navbar {
+            min-height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            text-decoration: none;
+        }
+
+        .logo-text {
+            color: white;
+            font-size: 25px;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            list-style: none;
+        }
+
+        .nav-link {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background-color: var(--dark-color);
+        }
+
+        .menu-icon {
+            display: none;
+            border: none;
+            background: transparent;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .testimonials-section {
+            padding: 70px 20px;
+        }
+
+        .testimonials-heading {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .testimonials-heading h1 {
+            color: var(--primary-color);
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .testimonials-heading p {
+            max-width: 650px;
+            margin: auto;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .testimonials-grid {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        .testimonial-card {
+            background-color: white;
+            padding: 30px 25px;
+            border: 1px solid #f0dfcf;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.04);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .customer-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #ffe0d5;
+            margin-bottom: 15px;
+        }
+
+        .customer-name {
+            color: var(--dark-color);
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .customer-role {
+            color: #777;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .stars {
+            color: #f5a623;
+            font-size: 22px;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .customer-review {
+            font-size: 14px;
+            line-height: 1.9;
+            color: #555;
+        }
+
+        .review-banner {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 45px 20px;
+            text-align: center;
+        }
+
+        .review-banner h2 {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .review-banner p {
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .home-button {
+            display: inline-block;
+            padding: 12px 28px;
+            border: 2px solid white;
+            border-radius: 30px;
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .home-button:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        @media screen and (max-width: 900px) {
+            .testimonials-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .navbar {
+                flex-wrap: wrap;
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                width: 100%;
+                padding-top: 10px;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-link {
+                text-align: center;
+            }
+
+            .testimonials-heading h1 {
+                font-size: 34px;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .review-banner h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar section-content">
+
+            <a href="Samuel.html" class="nav-logo">
+                <h2 class="logo-text">☕Coffee</h2>
+            </a>
+
+            <button class="menu-icon"
+                    aria-label="Toggle navigation menu"
+                    aria-expanded="false">
+                ☰
+            </button>
+
+            <ul class="nav-menu">
+                <li><a href="Samuel.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="menu.html" class="nav-link">Menu</a></li>
+                <li><a href="testimonials.html"
+                       class="nav-link active">Testimonials</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+    <main>
+        <section class="testimonials-section">
+
+            <div class="testimonials-heading">
+                <h1>Customer Testimonials</h1>
+
+                <p>
+                    Every cup tells a story! Discover what coffee lovers
+                    have to say about their coffee experience with us.
+                    Your happiness and satisfaction mean everything to us.
+                </p>
+            </div>
+
+            <div class="testimonials-grid">
+
+                <article class="testimonial-card">
+                    
+                    <h2 class="customer-name">Bolaji Salau</h2>
+                    <p class="customer-role">Coffee Lover</p>
+
+                    <div class="stars" aria-label="5 out of 5 stars">
+                        ★★★★★
+                    </div>
+
+                    <p class="customer-review">
+                        "The coffee is amazing! I love the rich flavour
+                        and smooth taste. It is a wonderful way to start
+                        my morning."
+                    </p>
+                </article>
+
+                <article class="testimonial-card">
+
+                    <h2 class="customer-name">Bayo Ade</h2>
+                    <p class="customer-role">Regular Customer</p>
+
+                    <div class="stars" aria-label="5 out of 5 stars">
+                        ★★★★★
+                    </div>
+
+                    <p class="customer-review">
+                        "I enjoy the quality and taste of the coffee.
+                        It is perfect for relaxing after a busy day.
+                        I would happily recommend it to others."
+                    </p>
+                </article>
+
+                <article class="testimonial-card">
+                    
+                    <h2 class="customer-name">Grace Adeola</h2>
+                    <p class="customer-role">Coffee Enthusiast</p>
+
+                    <div class="stars" aria-label="5 out of 5 stars">
+                        ★★★★★
+                    </div>
+
+                    <p class="customer-review">
+                        "The coffee selection is lovely, and there is
+                        something for every mood. The latte is one of
+                        my favourite drinks!"
+                    </p>
+                </article>
+
+                <article class="testimonial-card">
+                    
+                    <h2 class="customer-name">Lawal John</h2>
+                    <p class="customer-role">Coffee Fan</p>
+
+                    <div class="stars" aria-label="5 out of 5 stars">
+                        ★★★★★
+                    </div>
+
+                    <p class="customer-review">
+                        "I appreciate a good cup of coffee, and I love
+                        trying different blends. The menu has some
+                        delicious options."
+                    </p>
+                </article>
+
+                <article class="testimonial-card">
+
+                    <h2 class="customer-name">Emmanuel Okon</h2>
+                    <p class="customer-role">Coffee Lover</p>
+
+                    <div class="stars" aria-label="5 out of 5 stars">
+                        ★★★★★
+                    </div>
+
+                    <p class="customer-review">
+                        "The iced coffee is refreshing and delicious.
+                        It is a great choice when I want something cool
+                        and full of flavour."
+                    </p>
+                </article>
+
+                <article class="testimonial-card">
+
+                    <h2 class="customer-name">John Peter</h2>
+                    <p class="customer-role">Coffee Enthusiast</p>
+
+                    <div class="stars" aria-label="5 out of 5 stars">
+                        ★★★★★
+                    </div>
+
+                    <p class="customer-review">
+                        "A good cup of coffee makes my day better.
+                        I enjoy the variety of drinks and look forward
+                        to trying more of them."
+                    </p>
+                </article>
+
+            </div>
+        </section>
+        <section class="review-banner">
+            <h2>Every Cup, A Happy Moment!</h2>
+
+            <p>
+                Discover your favourite coffee and make every day special.
+            </p>
+
+            <a href="menu.html" class="home-button">
+                Explore Our Menu
+            </a>
+        </section>
+
+    </main>
+
+    <script>
+        const menuButton = document.querySelector(".menu-icon");
+        const navMenu = document.querySelector(".nav-menu");
+
+        menuButton.addEventListener("click", function () {
+            navMenu.classList.toggle("active");
+
+            const isExpanded = navMenu.classList.contains("active");
+            menuButton.setAttribute("aria-expanded", isExpanded);
+        });
+
+        document.querySelectorAll(".nav-link").forEach(function (link) {
+            link.addEventListener("click", function () {
+                navMenu.classList.remove("active");
+                menuButton.setAttribute("aria-expanded", "false");
+            });
+        });
+    </script>
+
+</body>
+</html>
