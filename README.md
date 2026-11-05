@@ -10,8 +10,8 @@ The Coffee Website provides visitors with information about a coffee business, i
 
 🛠️ Technologies Used
 
-- HTML5 – For structuring the website.
-- CSS3– For styling and responsive design.
+- HTML – For structuring the website.
+- CSS – For styling and responsive design.
 - JavaScript – For interactive features and DOM manipulation.
 
 ✨ Features
