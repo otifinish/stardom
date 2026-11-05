@@ -51,7 +51,7 @@ Through this project, I practised:
 - Responsive Web Design.
 - JavaScript DOM manipulation.
 - JavaScript events.
-- Git and GitHub branching.
+- GitHub branching.
 
 🔗 Live Website
 
