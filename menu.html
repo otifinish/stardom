@@ -114,7 +114,6 @@
             font-size: 16px;
         }
 
-        /* Menu Category Buttons */
         .menu-filters {
             display: flex;
             justify-content: center;
@@ -332,6 +331,235 @@
                 font-size: 12px;
             }
         }
+
+/* Shopping Cart */
+
+.cart-section {
+    padding: 60px 20px;
+    background: #fff1e8;
+}
+
+.cart-container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.cart-container > h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    font-size: 32px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 18px;
+    margin-bottom: 15px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.cart-item h3 {
+    color: var(--primary-color);
+}
+
+.cart-item p {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.cart-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cart-actions button,
+.cart-summary button {
+    padding: 9px 14px;
+    border: none;
+    border-radius: 5px;
+    background: var(--primary-color);
+    color: white;
+    cursor: pointer;
+}
+
+.cart-actions button:hover,
+.cart-summary button:hover {
+    background: var(--dark-color);
+}
+
+.cart-summary {
+    margin-top: 25px;
+    padding: 25px;
+    background: white;
+    border-radius: 10px;
+}
+
+.cart-summary h3 {
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.cart-summary p {
+    margin-bottom: 15px;
+}
+
+.add-cart-btn {
+    display: inline-block;
+    padding: 9px 15px;
+    border: none;
+    border-radius: 20px;
+    background: var(--primary-color);
+    color: white;
+    cursor: pointer;
+}
+
+.add-cart-btn:hover {
+    background: var(--dark-color);
+}
+
+@media (max-width: 600px) {
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cart-actions {
+        flex-wrap: wrap;
+    }
+}
+
+/* Checkout Section */
+
+.checkout-section {
+    display: none;
+    max-width: 700px;
+    margin: 40px auto 0;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.checkout-section.active {
+    display: block;
+}
+
+.checkout-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    font-size: 15px;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+#place-order-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 25px;
+    background: #25D366;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#place-order-btn:hover {
+    background: #128C7E;
+}
+
+.location-section {
+    padding: 80px 20px;
+    text-align: center;
+    background-color: #fff8f0;
+}
+
+.location-container {
+    max-width: 650px;
+    margin: 30px auto 0;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.location-container h3 {
+    margin: 25px 0 15px;
+}
+
+.location-button,
+.location-search button {
+    background: #ff4b2b;
+    color: white;
+    border: none;
+    padding: 13px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.location-search {
+    display: flex;
+    gap: 10px;
+}
+
+.location-search input {
+    flex: 1;
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.location-button:hover,
+.location-search button:hover {
+    background: #ff416c;
+}
+
+#location-message {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+    .location-search {
+        flex-direction: column;
+    }
+}
+
     </style>
 </head>
 
@@ -356,6 +584,7 @@
                 <li><a href="menu.html" class="nav-link active">Menu</a></li>
                 <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="#cart" class="nav-link">🛒 Cart (<span id="cart-count">0</span>)</a></li>
             </ul>
 
         </nav>
@@ -374,6 +603,42 @@
                     made to brighten your day.
                 </p>
             </div>
+
+<section class="location-section" id="locations">
+    <div class="section-content">
+
+        <h2 class="page-title">Find Coffee Shops Near You</h2>
+
+        <p class="page-description">
+            Discover coffee shops around you. Find your
+            favourite coffee and explore new places.
+        </p>
+
+        <div class="location-container">
+
+            <button id="find-nearby" class="location-button">
+                Find Coffee Shops Near Me
+            </button>
+
+            <h3>Or search by location</h3>
+
+            <div class="location-search">
+                <input
+                    type="text"
+                    id="location-input"
+                    placeholder="Enter city or area, e.g. Ikorodu, Lagos">
+
+                <button id="search-location">
+                    Search
+                </button>
+            </div>
+
+            <p id="location-message"></p>
+
+        </div>
+    </div>
+</section>
+
             <div class="menu-filters">
                 <button class="filter-btn active" data-filter="all">
                     All
@@ -395,114 +660,135 @@
                     Non-Coffee
                 </button>
             </div>
-            <div class="menu-grid">
+            <div class="menu-grid" id="menu-grid">
 
-                <article class="menu-card" data-category="coffee">
-                    <img
-                        src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=500&q=80"
-                        alt="Freshly brewed Americano coffee">
-
-                    <div class="menu-info">
-                        <h3>Americano</h3>
-                        <p>hot coffee.</p>
-                        <span class="price">#3500</span>
-                        <a href="contact.html" class="order-btn">Order Now</a>
-                    </div>
-                </article>
-
-                <article class="menu-card" data-category="coffee">
-                    <img
-                        src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=500&q=80"
-                        alt="Cappuccino with milk foam">
-
-                    <div class="menu-info">
-                        <h3>Cappuccino</h3>
-                        <p>steamed milk and foam.</p>
-                        <span class="price">#4000</span>
-                        <a href="contact.html" class="order-btn">Order Now</a>
-                    </div>
-                </article>
-
-                <article class="menu-card" data-category="coffee">
-                    <img
-                        src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=500&q=80"
-                        alt="Creamy latte coffee">
-
-                    <div class="menu-info">
-                        <h3>Latte</h3>
-                        <p>smooth steamed milk.</p>
-                        <span class="price">#4500</span>
-                        <a href="contact.html" class="order-btn">Order Now</a>
-                    </div>
-                </article>
-
-                <article class="menu-card" data-category="special">
-                    <img
-                        src="https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?auto=format&fit=crop&w=500&q=80"
-                        alt="Chocolate mocha coffee">
-
-                    <div class="menu-info">
-                        <h3>Mocha</h3>
-                        <p>chocolate and steamed milk.</p>
-                        <span class="price">#4500</span>
-                        <a href="contact.html" class="order-btn">Order Now</a>
-                    </div>
-                </article>
-
-                <article class="menu-card" data-category="iced">
-                    <img
-                        src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=500&q=80"
-                        alt="Refreshing iced coffee">
-
-                    <div class="menu-info">
-                        <h3>Iced Coffee</h3>
-                        <p>Chilled coffee for a refreshing break.</p>
-                        <span class="price">#3500</span>
-                        <a href="contact.html" class="order-btn">Order Now</a>
-                    </div>
-                </article>
-
-                <article class="menu-card" data-category="special">
-                    <img
-                        src="https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?auto=format&fit=crop&w=500&q=80"
-                        alt="Sweet caramel coffee">
-
-                    <div class="menu-info">
-                        <h3>Caramel Latte</h3>
-                        <p>milk and caramel flavour.</p>
-                        <span class="price">#4500</span>
-                        <a href="contact.html" class="order-btn">Order Now</a>
-                    </div>
-                </article>
-
-                <article class="menu-card" data-category="coffee">
-                    <img
-                        src="https://images.unsplash.com/photo-1497515114629-f71d768fd07c?auto=format&fit=crop&w=500&q=80"
-                        alt="A cup of black coffee">
-
-                    <div class="menu-info">
-                        <h3>Black Coffee</h3>
-                        <p>Pure, bold and full of flavour.</p>
-                        <span class="price">#3000</span>
-                        <a href="contact.html" class="order-btn">Order Now</a>
-                    </div>
-                </article>
-
-                <article class="menu-card" data-category="non-coffee">
-                    <img
-                        src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&w=500&q=80"
-                        alt="Green matcha latte">
-
-                    <div class="menu-info">
-                        <h3>Matcha Latte</h3>
-                        <p>A smooth blend of matcha and milk.</p>
-                        <span class="price">#4000</span>
-                        <a href="contact.html" class="order-btn">Order Now</a>
-                    </div>
-                </article>
-
+                 <p>Loading coffee products...</p>
             </div>
         </section>
+        
+<!-- Shopping Cart Section -->
+        <section class="cart-section" id="cart">
+
+            <div class="cart-container">
+
+            <h2>My Shopping Cart 🛒</h2>
+
+            <div id="cart-items">
+
+            <p>Your cart is currently empty.</p>
+
+            </div>
+
+            <div class="cart-summary">
+
+            <h3>Order Summary</h3>
+
+            <p>
+                Total Items:
+                <span id="cart-total-items">0</span>
+            </p>
+
+            <h3>
+                Total:
+                <span id="cart-total-price">₦0</span>
+            </h3>
+
+            <button id="clear-cart" type="button">
+                Clear Cart
+            </button>
+
+            <button id="checkout-btn" type="button">
+                Proceed to Checkout
+            </button>
+            
+
+            </div>
+
+<!-- Customer Checkout Form -->
+
+<div class="checkout-section" id="checkout-section">
+
+    <h2>Customer Information</h2>
+
+    <form id="checkout-form">
+
+        <div class="form-group">
+
+            <label for="customer-name">Full Name</label>
+
+            <input
+                type="text"
+                id="customer-name"
+                placeholder="Enter your full name"
+                required
+            >
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="customer-email">Email Address</label>
+
+            <input
+                type="email"
+                id="customer-email"
+                placeholder="Enter your email address"
+                required
+            >
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="customer-phone">Phone Number</label>
+
+            <input
+                type="tel"
+                id="customer-phone"
+                placeholder="Enter your phone number"
+                required
+            >
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="delivery-address">Delivery Address</label>
+
+            <textarea
+                id="delivery-address"
+                placeholder="Enter your delivery address"
+                required
+            ></textarea>
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="order-notes">
+                Additional Instructions
+            </label>
+
+            <textarea
+                id="order-notes"
+                placeholder="Any special instructions? (Optional)"
+            ></textarea>
+
+        </div>
+
+        <button type="submit" id="place-order-btn">
+            Place Order on WhatsApp
+        </button>
+
+    </form>
+
+</div>
+
+
+            </div>
+
+        </section>
+
 
         <section class="menu-banner">
             <div class="banner-content">
@@ -519,7 +805,7 @@
                     Back to Home
                 </a>
 
-            </div>
+                </div>
         </section>
 
     </main>
@@ -541,36 +827,8 @@
                 menuButton.setAttribute("aria-expanded", "false");
             });
         });
-
-        // Menu category filters
-        const filterButtons = document.querySelectorAll(".filter-btn");
-        const menuCards = document.querySelectorAll(".menu-card");
-
-        filterButtons.forEach(function (button) {
-            button.addEventListener("click", function () {
-
-                const selectedCategory = button.dataset.filter;
-
-                filterButtons.forEach(function (item) {
-                    item.classList.remove("active");
-                });
-
-                button.classList.add("active");
-
-                menuCards.forEach(function (card) {
-                    if (
-                        selectedCategory === "all" ||
-                        card.dataset.category === selectedCategory
-                    ) {
-                        card.classList.remove("hidden");
-                    } else {
-                        card.classList.add("hidden");
-                    }
-                });
-            });
-        });
+    
     </script>
-
+    <script src="menu.js"></script>
 </body>
 </html>
-```
